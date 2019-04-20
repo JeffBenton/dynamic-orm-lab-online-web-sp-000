@@ -56,8 +56,6 @@ class InteractiveRecord
       SELECT * FROM #{self.table_name}
         WHERE name = ?;
       SQL
-    DB[:conn].execute(query, name).map do |row|
-      self.class.new(row)
-    end.first
+    DB[:conn].execute(query, name)
   end
 end
