@@ -65,7 +65,6 @@ class InteractiveRecord
         SELECT * FROM #{self.table_name}
         where #{key} = ?;
       SQL
-      binding.pry
     DB[:conn].execute(query, attr[key])
   end
 end
