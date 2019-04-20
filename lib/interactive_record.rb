@@ -60,10 +60,11 @@ class InteractiveRecord
   end
   
   def self.find_by(attr)
-    binding.pry
+    key = attr.keys.first.to_s
     query = <<-SQL
         SELECT * FROM #{self.table_name}
-        
+        where #{key} = ?;
       SQL
+    DB[:conn].execute(query, attr[key])
   end
 end
